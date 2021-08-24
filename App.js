@@ -11,7 +11,7 @@ function Items({ done: doneHeading, onPressItem }) {
 	React.useEffect(() => {
 		db.transaction(tx => {
 			tx.executeSql( `select * from items where done =? `,
-			[doneHeading ? 1: 0],
+			[doneHeading ? 1 : 0],
 			(_, { rows: { _array } }) => setItems(_array) );
 		});
 	}, []);
@@ -25,7 +25,7 @@ function Items({ done: doneHeading, onPressItem }) {
 return (
 	<View style={styles.sectionContainer}>
 		<Text style={styles.sectionHeading}>{heading}</Text>
-		{items.map(({ id, done, value }) => {
+		{items.map(({ id, done, value }) => (
   		<TouchableOpacity
 	  		key = {id}
 		  	onPress={() => onPressItem && onPressItem(id)}
@@ -37,7 +37,7 @@ return (
 		    }} >
 			  <Text style={{ color: done ? "#fff" : "#000" }}>{value}</Text>
 		  </TouchableOpacity>
-    })}
+    ))}
 	</View>
 );
 }
@@ -138,7 +138,7 @@ const styles = StyleSheet.create({
 		flexDirection: "row"
 	},
 	input: {
-		borderColor: "#463eb",
+		borderColor: "#f0f0f0",
 		borderRadius: 4,
 		borderWidth: 1,
 		flex: 1,
